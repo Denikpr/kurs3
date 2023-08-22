@@ -36,3 +36,13 @@ def sort_date(operation_executed):
             datelist.append(oper['date'])
     datelist.sort(reverse = True)
     return datelist
+
+def last_five_operations(last_five_times,operation_executed):
+    '''
+    Делаем словарь из 5 полседних операций.
+    '''
+    result = {}
+    for oper in operation_executed:
+        if 'date' in oper and oper['date'] in last_five_times:
+            result[last_five_times.index(oper['date'])] = oper
+    return result
