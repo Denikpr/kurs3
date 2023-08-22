@@ -46,3 +46,12 @@ def last_five_operations(last_five_times,operation_executed):
         if 'date' in oper and oper['date'] in last_five_times:
             result[last_five_times.index(oper['date'])] = oper
     return result
+
+def create_message(operation):
+    '''
+    Формируем вывод сообщения в нужной форме.
+    '''
+    return f'''{operation['date'][:10]} {operation['description']}
+{create_from(operation)} -> {create_to(operation)}
+{operation['operationAmount']['amount']} {operation['operationAmount']['currency']['name']} 
+'''
