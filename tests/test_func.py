@@ -33,6 +33,20 @@ TEST_OPERATION = {
     "to": "Счет 14211924144426031657"
   }
 
+TEST_OPERATION_2 = {
+    "id": 594226727,
+    "state": "EXECUTED",
+    "date": "2018-09-12T21:27:25.241689",
+    "operationAmount": {
+      "amount": "67314.70",
+      "currency": {
+        "name": "руб.",
+        "code": "RUB"
+      }
+    },
+    "description": "Перевод организации"
+  }
+
 TEST_NO_SORT = [
   {
     "id": 594226727,
@@ -79,3 +93,7 @@ def test_create_message():
 Visa Platinum 1246 37** **** 3588 -> Счет **1657
 67314.70 руб.
 '''
+
+def test_create_from():
+  assert create_from(TEST_OPERATION) == 'Visa Platinum 1246 37** **** 3588'
+  assert create_from(TEST_OPERATION_2) == 'cash'
