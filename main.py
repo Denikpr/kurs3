@@ -2,8 +2,8 @@ from func import load_operation, is_executed, sort_date, last_five_operations, c
 
 
 operations = load_operation()
-executed = is_executed(operations)
 
+executed = is_executed(operations)
 
 sorted = sort_date(executed)
 
