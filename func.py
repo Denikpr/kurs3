@@ -55,3 +55,24 @@ def create_message(operation):
 {create_from(operation)} -> {create_to(operation)}
 {operation['operationAmount']['amount']} {operation['operationAmount']['currency']['name']} 
 '''
+
+def create_from(operation):
+    '''
+    Маскируем номер счета и номер карты,
+    в операции от кого.
+    '''
+    result = ''
+    number = ''
+    if 'from' not in operation:
+        return "cash"
+    card_list = operation['from'].split()
+    for item in card_list:
+        if item.isalpha():
+            result += item + " "
+        else:
+            number += item
+    if 'Счет' in operation['from']:
+        result += '**' + number[-4:]
+    else:
+        result += number[:4] + ' ' + number[4:6] + '** **** ' + number[-4:]
+    return result
