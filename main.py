@@ -1,16 +1,14 @@
-# This is a sample Python script.
-
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+from func import load_operation, is_executed, sort_date, last_five_operations, create_message
 
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
+operations = load_operation()
 
+executed = is_executed(operations)
 
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
+sorted = sort_date(executed)
 
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+last_operations = last_five_operations(sorted[:5], executed)
+
+for item in range(5):
+    print(create_message(last_operations[item]))
+    
