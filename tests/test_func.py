@@ -16,5 +16,43 @@ TEST_OPERATIONS = [
     "from": "Visa Platinum 1246377376343588",
     "to": "Счет 14211924144426031657"
   }]
+
+TEST_NO_SORT = [
+  {
+    "id": 594226727,
+    "state": "EXECUTED",
+    "date": "2018-09-12T21:27:25.241689",
+    "operationAmount": {
+      "amount": "67314.70",
+      "currency": {
+        "name": "руб.",
+        "code": "RUB"
+      }
+    },
+    "description": "Перевод организации",
+    "from": "Visa Platinum 1246377376343588",
+    "to": "Счет 14211924144426031657"
+  },
+    {
+    "id": 594226123,
+    "state": "EXECUTED",
+    "date": "2020-09-12T21:27:25.241689",
+    "operationAmount": {
+      "amount": "67314.70",
+      "currency": {
+        "name": "руб.",
+        "code": "RUB"
+      }
+    },
+    "description": "Перевод организации",
+    "from": "Visa Platinum 1246377376343588",
+    "to": "Счет 14211924144426031657"
+  }]
+
+TEST_SORT = ['2020-09-12T21:27:25.241689', '2018-09-12T21:27:25.241689']
+
 def test_is_executed():
     assert is_executed (TEST_OPERATIONS) == TEST_OPERATIONS
+
+def test_sort_date():
+    assert sort_date(TEST_NO_SORT) == TEST_SORT
