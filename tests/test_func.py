@@ -97,3 +97,7 @@ Visa Platinum 1246 37** **** 3588 -> Счет **1657
 def test_create_from():
   assert create_from(TEST_OPERATION) == 'Visa Platinum 1246 37** **** 3588'
   assert create_from(TEST_OPERATION_2) == 'cash'
+
+def test_create_to():
+  assert create_to(TEST_OPERATION) == 'Счет **1657'
+  assert create_to(TEST_OPERATION_2) == 'cash'
