@@ -17,7 +17,7 @@ def load_operation():
 def is_executed(operations):
     '''
     Делаем выборку из словаря по EXECUTED,
-    Возвращаем словать.
+    Возвращаем словарь.
     '''
     operation_executed = []
     for operation in operations:
@@ -37,7 +37,7 @@ def sort_date(operation_executed):
     datelist.sort(reverse = True)
     return datelist
 
-def last_five_operations(last_five_times,operation_executed):
+def last_five_operations(last_five_times, operation_executed):
     '''
     Делаем словарь из 5 полседних операций.
     '''
@@ -53,7 +53,7 @@ def create_message(operation):
     '''
     return f'''{operation['date'][:10]} {operation['description']}
 {create_from(operation)} -> {create_to(operation)}
-{operation['operationAmount']['amount']} {operation['operationAmount']['currency']['name']} 
+{operation['operationAmount']['amount']} {operation['operationAmount']['currency']['name']}
 '''
 
 def create_from(operation):
