@@ -17,6 +17,22 @@ TEST_OPERATIONS = [
     "to": "Счет 14211924144426031657"
   }]
 
+TEST_OPERATION = {
+    "id": 594226727,
+    "state": "EXECUTED",
+    "date": "2018-09-12T21:27:25.241689",
+    "operationAmount": {
+      "amount": "67314.70",
+      "currency": {
+        "name": "руб.",
+        "code": "RUB"
+      }
+    },
+    "description": "Перевод организации",
+    "from": "Visa Platinum 1246377376343588",
+    "to": "Счет 14211924144426031657"
+  }
+
 TEST_NO_SORT = [
   {
     "id": 594226727,
@@ -56,3 +72,10 @@ def test_is_executed():
 
 def test_sort_date():
     assert sort_date(TEST_NO_SORT) == TEST_SORT
+
+
+def test_create_message():
+  assert create_message(TEST_OPERATION) == '''2018-09-12 Перевод организации
+Visa Platinum 1246 37** **** 3588 -> Счет **1657
+67314.70 руб.
+'''
