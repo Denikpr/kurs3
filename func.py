@@ -76,3 +76,24 @@ def create_from(operation):
     else:
         result += number[:4] + ' ' + number[4:6] + '** **** ' + number[-4:]
     return result
+
+def create_to(operation):
+    '''
+    Маскируем номер счета и номер карты,
+    в операции кому.
+    '''
+    result = ''
+    number = ''
+    if 'to' not in operation:
+        return "cash"
+    card_list = operation['to'].split()
+    for item in card_list:
+        if item.isalpha():
+            result += item + " "
+        else:
+            number += item
+    if 'Счет' in operation['to']:
+        result += '**' + number[-4:]
+    else:
+        result += number[:4] + ' ' + number[4:6] + '** **** ' + number[-4:]
+    return result
